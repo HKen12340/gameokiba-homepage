@@ -199,30 +199,30 @@ function Gameover(){
     con.fillText("yourscore:"+point,180,190);
 
 //データベースのスコア情報を降順に並べ替え、上位5位を表示
-    Harowin.order("score", true)
-    .limit(5)
-    .fetchAll()
-        .then(function(results){
-        let rank = 0;
-        let scoreArray = Array(5);
-    for (var i = 0; i < 5; i++) {
-        console.log("success!");
-        var object = results[i];
+    // Harowin.order("score", true)
+    // .limit(5)
+    // .fetchAll()
+    //     .then(function(results){
+    //     let rank = 0;
+    //     let scoreArray = Array(5);
+    // for (var i = 0; i < 5; i++) {
+    //     console.log("success!");
+    //     var object = results[i];
         
-    if(object!==null){
-        rank++;
-        scoreArray[i] = object.get("score");
-        if(i>0&&scoreArray[i]==scoreArray[i-1]){
-            rank--;
-                }
-        con.font = "15px 'MSゴシック'";
-        con.fillText(rank+":"+scoreArray[i]+" ("+object.get("name")+")",180,75+i*20);
-                    }
-                  }                  
-             })
-        .catch(function(err){
-            console.log("err");
-            });
+    // if(object!==null){
+    //     rank++;
+    //     scoreArray[i] = object.get("score");
+    //     if(i>0&&scoreArray[i]==scoreArray[i-1]){
+    //         rank--;
+    //             }
+    //     con.font = "15px 'MSゴシック'";
+    //     con.fillText(rank+":"+scoreArray[i]+" ("+object.get("name")+")",180,75+i*20);
+    //                 }
+    //               }                  
+    //          })
+    //     .catch(function(err){
+    //         console.log("err");
+    //         });
     }
 
 
@@ -296,6 +296,15 @@ for(let i=0;i<3;i++){
 	c.candy = false;
  }
 }
+
+}
+
+//スコア表示
+function score(){
+   con.fillStyle = "yellow";
+   con.font = "20px'MSゴシック'";
+   con.fillText("score:"+point,can.width-120,30);
+
 
 }
 
