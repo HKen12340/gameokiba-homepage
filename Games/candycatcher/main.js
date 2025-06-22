@@ -1,7 +1,3 @@
-//データベース関連
-var ncmb = new NCMB("","");
-var Harowin = ncmb.DataStore("harowin");
-var harowin = new Harowin();
 
 //ゲーム関連
 var can = document.getElementById("can");
@@ -140,22 +136,6 @@ if(this.candy==true)con.drawImage(image,this.x,this.y,this.ox,this.oy);
 }
 
 
-//スコア表示
-function score(){
-   con.fillStyle = "yellow";
-　   con.font = "20px'MSゴシック'";
-   con.fillText("score:"+point,can.width-120,30);
-
-   /*if(point%100 == 0){
-       for(let i=0;i<o.length;i++){
-   o[i].speed += 3;
-   ffff += 100;
-       }
-   grnx += 3;
-   }*/
-
-}
-
 var fps;
 
 //インスタンス作成
@@ -245,32 +225,7 @@ function Gameover(){
             });
     }
 
-//スコア送信関数
-    function transmmition(){
-    /*    sendmemu.style.display = "none";
-    let Name = document.getElementById("name").value;
-    harowin.set("score",point);
-    harowin.set("name"," "+Name);         
-    harowin.save()
-    .then(function(){  
-    
-      // 保存に成功した場合の処理
-    })
-    .catch(function(err){
-        console.log("eeror!");
-      // 保存に失敗した場合の処理
-    });*/
-    }
 
-/*function groundrow(x){
-        grx -= x;
-    if(grx <= -500){
-        grx = 0;
-    }
-        let image = new Image();
-        image.src = "image/ground.png";
-        con.drawImage(image,grx,190,1000,50);
-}*/
 
 var counter = 0;
 

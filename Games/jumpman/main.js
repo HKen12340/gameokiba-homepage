@@ -1,7 +1,5 @@
 
-var ncmb = new NCMB("","");
-var TestClass = ncmb.DataStore("TestClass");
-var testClass = new TestClass();
+
 var can = document.getElementById("can");
 var con = can.getContext("2d");
 var jump = false;
