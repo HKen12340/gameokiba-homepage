@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="Gyalagyostyle.css">
+<!DOCTYPE html>
+    <audio id="shotSE">
+        <source src="syuuting/sound/shoot2.mp3">
+    </audio>
+     <audio id="Eshot">
+        <source src="syuuting/sound/shoot1.mp3">
+    </audio>
+    <audio id="Emisel">
+        <source src="syuuting/sound/pyo1.mp3">
+    </audio>
+    <audio id="shottruckSE">
+        <source src="syuuting/sound/short_bomb.mp3">
+    </audio>
+    <audio id="Ebonber">
+        <source src="syuuting/sound/game_explosion1.mp3">
+    </audio>
+    <audio id="BGM">
+      <source src="syuuting/BGM/bgm.mp3">
+    </audio>
+     <audio id="TITLEBGM">
+      <source src="syuuting/BGM/titlebgm.mp3">
+    </audio>
+    <head>
+        <meta http-equiv="content-type" charset="utf-8">
+            <title>シューティングゲーム</title>
+    </head>
+    <body>
+      <div id="Title">
+      <img id="title" src="syuuting/title.png"width = "250px"></img>
+      <a id="startB" onclick="Gamestart()">スタート</a>
+      </div>
+      <a id="reload" onclick="location.reload()" style="display:none">スタート画面へ</a>
+      <a id="SBTA" onclick="p.shot(true)"style="display:none">ショット</a>
+
+      <canvas id="screen"></canvas>
+    </body>
+ <script type = "text/javascript" src = "js/main.js"></script>
+     <script type = "text/javascript" src = "js/player.js"></script>
+    <script type = "text/javascript" src = "js/Enemy.js"></script>
+    <script type = "text/javascript" src = "js/Boss.js"></script>
+    <script type = "text/javascript" src = "js/Ballet.js"></script>
+<script type = "text/javascript" src = "js/GameSystem.js"></script>
+<script>
+var can;
+       can = document.getElementById("screen");
+       var con;
+       con = can.getContext("2d");
+ 	var back =  document.getElementById("back");
+
+       let SWIDTH = 350;
+       let SHEIGHT = 450;
+
+       can.width= SWIDTH;
+       can.height = SHEIGHT;
+
+       var shotSE = document.getElementById("shotSE");
+       var Eshot = document.getElementById("Eshot");
+       var Emisel = document.getElementById("Emisel");
+       var shottruckSE = document.getElementById("shottruckSE");
+       var Ebonber = document.getElementById("Ebonber");
+       var shotButton =  document.getElementById("SBTA");
+       var touchcount = 0;
+ 
+        var px;
+	var py;
+        var GAMEC = 0;
+        let count = 0;
+        var p = new Player();
+        var score = 0;
+
+        var titlebgm = document.getElementById("TITLEBGM");
+        var bgm = document.getElementById("BGM");
+
+        titlebgm.play();
+        titlebgm.loop = true;
+
+        let maxwave = 9;
+        var Bosswave = maxwave+1;
+        var esterts = Array(maxwave);
+
+      
+         esterts[0] = [{x:50,y:-100,Width:50,Height:50,Type:0,Move:2},
+                       {x:150,y:-50,Width:50,Height:50,Type:0,Move:2},
+                       {x:250,y:-100,Width:50,Height:50,Type:0,Move:2}];
+
+         esterts[1] = [{x:90,y:-60,Width:50,Height:50,Type:0,Move:2},
+                      {x:150,y:-30,Width:50,Height:50,Type:0,Move:2},
+                      {x:210,y:-30,Width:50,Height:50,Type:0,Move:2},
+                      {x:280,y:-60,Width:50,Height:50,Type:0,Move:2}];
+
+         esterts[2] = [
+                       {x:-50,y:-50,Width:50,Height:50,Type:1,Move:0},
+                       {x:250,y:-100,Width:50,Height:50,Type:0,Move:2},
+                       {x:SWIDTH+50,y:-50,Width:50,Height:50,Type:1,Move:1}];
+
+         esterts[3] = [{x:50,y:-50,Width:50,Height:50,Type:1,Move:3},
+                       {x:250,y:-50,Width:50,Height:50,Type:1,Move:3},
+                       {x:160,y:-100,Width:50,Height:50,Type:0,Move:3}];
+
+         esterts[4] = [{x:50,y:-50,Width:50,Height:50,Type:1,Move:0},
+                       {x:180,y:-50,Width:50,Height:50,Type:1,Move:2},
+                       {x:250,y:-100,Width:50,Height:50,Type:1,Move:1}];
+
+        esterts[5] = [{x:30,y:-50,Width:50,Height:50,Type:2,Move:2},
+                      {x:280,y:-130,Width:50,Height:50,Type:2,Move:2}];
+       
+        esterts[6] = [{x:50,y:-90,Width:50,Height:50,Type:3,Move:2},
+                       {x:250,y:-50,Width:50,Height:50,Type:3,Move:2}];
+
+         esterts[7] = [{x:30,y:-50,Width:50,Height:50,Type:0,Move:2},
+                       {x:130,y:-120,Width:50,Height:50,Type:3,Move:2},
+                       {x:280,y:-20,Width:50,Height:50,Type:0,Move:2}];
+          
+        esterts[8] = [{x:30,y:-50,Width:50,Height:50,Type:1,Move:2},
+                       {x:160,y:-160,Width:50,Height:50,Type:2,Move:2},
+                       {x:280,y:-50,Width:50,Height:50,Type:1,Move:2}];
+        
+        esterts[9] = [{x:50,y:-50,Width:50,Height:50,Type:3,Move:2},
+                       {x:160,y:-150,Width:50,Height:50,Type:2,Move:2},
+                       {x:250,y:-50,Width:50,Height:50,Type:3,Move:2}];
+        
+         esterts[Bosswave] = [{x:100,y:-200,Width:170,Height:170,Type:5}];
+      
+        var wave = 0;
+        var ekill = 0;
+        var e =  Array(maxwave);
+        for(var i=0;i<=maxwave;i++){
+        e[i] = Array(esterts[i].length);  
+        }
+        e[Bosswave] = Array(1);
+        
+      for(var j=0;j <e.length ;j++){
+    for(var i=0;i<e[j].length;i++){
+      if(j==Bosswave) e[j][i] = new Boss(esterts[j][i].x,esterts[j][i].y,esterts[j][i].Width,esterts[j][i].Height,esterts[j][i].Type);
+       else e[j][i] = new Emeny(esterts[j][i].x,esterts[j][i].y,esterts[j][i].Width,esterts[j][i].Height,esterts[j][i].Type,esterts[j][i].Move);
+    }
+      }
+
+
+      
+
+          var TX,TY;
+          
+        can.addEventListener("touchstart", function(event) {
+           TX =  event.changedTouches[0].pageX;
+            TY =  event.changedTouches[0].pageY;
+    });
+      can.addEventListener("touchmove", function(event) {
+          let NTX =  event.changedTouches[0].pageX;
+          let  NTY =  event.changedTouches[0].pageY;
+
+        let NPX = NTX-30;
+        let NPY = NTY-100; 
+          p.move(NPX,NPY);   
+    });
+
+  shotButton.addEventListener("touchstart", function(event) {
+    p.shot(true);
+    });
+
+    can.addEventListener("touchstart", function(e){
+        touchcount++; 
+        console.log(touchcount);
+});
+
+can.addEventListener("mousemove", function(e){
+ let mx = e.pageX - can.offsetLeft;
+ let my = e.pageY - can.offsetTop;
+ p.move(mx,my);
+});
+
+can.addEventListener("mousedown",function(e){
+//p.shot(true);
+});
+</script>
+    

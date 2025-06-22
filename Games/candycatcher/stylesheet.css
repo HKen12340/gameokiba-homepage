@@ -1,0 +1,46 @@
+body{
+user-select: none;
+}
+canvas{
+    background-image: url("image/title.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    }
+#trybotton{
+    background-color: red;
+    padding: 10px;
+    color: white;
+    z-index: 1;
+    position: absolute;
+    top: 210px;
+    left: 420px;
+}
+#transmmition{
+    background-color: red;
+    padding: 5px;
+    color: white;
+}
+#sendmemu{
+    z-index: 1;
+    position: absolute;
+    top: 220px;
+    left: 10px;
+}
+
+#idou1{
+ background-color: red;
+    padding: 20px;
+    color: white;
+ position: absolute;
+    top: 270px;
+    left: 140px;
+}
+#idou2{
+ background-color: red;
+    padding: 20px;
+    color: white;
+ position: absolute;
+    top: 270px;
+    left: 290px;
+}

@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+ <html>
+     <head>
+<meta name="viewport" content="width=device-width,initial-scale=0.7">
+         <meta charset="UTF-8">
+	         <link rel="stylesheet" href="stylesheet.css">
+ <link rel="icon" type="image/png" href = "image/candy.png">   
+	<title>JUMPMAN</title>
+     </head>
+
+     <audio id="jump"  preload="auto">
+         <source src="sound/jump.mp3">
+     </audio>
+     <audio id="gameover"  preload="auto">
+         <source src="sound/gameover.mp3">
+     </audio>
+     <audio id="BGM"  preload="auto">
+         <source src="sound/harowinbgm.mp3">
+     </audio>
+	<audio id="candy">
+	<source src="sound/candy.mp3">
+	</audio>
+    
+     <body>
+        <canvas id="can"width = "500" height="250"></canvas>
+	<button id="idou1">←</button>
+	<button id="idou2">→</button>
+        <div id="sendmemu"style="display:none">
+        <input type = "text" placeholder = "名前(書かなくてもOK)"　value=""  id="name">
+        <a id="transmmition" onclick = "transmmition()">ランキングにスコアを送信</a>
+        </div>
+        
+        <a id="trybotton" style="display:none" onclick = "location.reload()">リトライ</a>
+    </body>
+
+    <script type="text/javascript" src="ncmb.min.js" charset="utf-8"></script>
+
+    <script type = "text/javascript" src = "main.js">
+    
+    </script>
+ </html>
+ 

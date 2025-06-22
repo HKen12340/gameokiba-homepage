@@ -1,0 +1,50 @@
+        body{
+            user-select: none;
+        }
+	
+    canvas{
+      position:absolute;
+      z-index : -2;
+        border: 1px solid gray;
+background:url("syuuting/backgroundCase1.png");
+        }
+
+    #title{
+      z-index : 1;
+       position:absolute; top:145px; left:50px;
+    }
+    #startB{
+      position:absolute; top:300px; left:100px;
+    }
+    #SBTA{
+      position:absolute; top:460px; left:100px;
+    }
+    #reload{
+      position:absolute; top:300px; left:100px;
+    }
+    #startB,#SBTA,#reload {
+    position: absolute;
+   text-align: center;
+   height: 30px;
+   width: 65px;
+   margin-top: 5px;
+  display: inline-block;
+  padding: 1em 3em;
+  text-decoration: none;
+  font-weight: bold; 
+  background: rgba(247, 8, 8, 0.979);/*ボタン色*/
+  color: #ffffff;
+  border-bottom: solid 8px rgb(173, 2, 2);
+}
+#startB:active,#SBTA:active,#reload:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+#bgD{
+
+width:250px;/*★必須。横幅は背景画像の横サイズ*/
+height:100%;/*★必須。縦幅一杯*/
+}

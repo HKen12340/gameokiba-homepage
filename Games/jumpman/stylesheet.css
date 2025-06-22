@@ -1,0 +1,29 @@
+body{
+user-select: none;
+}
+canvas{
+    background-image: url("image/title.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    }
+#trybotton{
+    background-color: red;
+    padding: 10px;
+    color: white;
+    z-index: 1;
+    position: absolute;
+    top: 210px;
+    left: 420px;
+}
+#transmmition{
+    background-color: red;
+    padding: 5px;
+    color: white;
+}
+#sendmemu{
+    z-index: 1;
+    position: absolute;
+    top: 220px;
+    left: 10px;
+}

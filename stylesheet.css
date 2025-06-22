@@ -1,0 +1,52 @@
+      #pagetitle{
+    display: block;
+    width: 70%;
+    color:rgb(255, 255, 255);
+    margin:5px auto;
+    }
+
+    #setumei{
+        width: 60%;
+        border-width: 2px;
+        border-color: gray;
+        border-style: solid;
+        padding: 5px;
+	text-align :center;
+	margin:20px auto;
+    }
+
+    p{
+    line-height: 1.5;
+    font-size: 22px;
+    }
+
+    .GameContents {          
+	display:flex;
+	gap:10px
+        margin:10px auto;
+        position:relative;
+	left:8%;
+       width: 90%;
+        padding:10px; 
+    }
+
+    img.GameContents {     
+        width: 30%;
+        height: 300px;
+	margin:0 10px;
+          }
+
+        p.GameContents{
+	width: 40%;
+	text-align:justify;
+         }
+	a{
+	position:relative;
+	left:-20%;
+	top:250px;
+	}
+
+         iframe{
+	width:50%;
+	margin:200px auto;
+        }
